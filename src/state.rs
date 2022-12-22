@@ -5,7 +5,6 @@ pub struct State {
     device: wgpu::Device,
     queue: wgpu::Queue,
     config: wgpu::SurfaceConfiguration,
-
     pub size: winit::dpi::PhysicalSize<u32>,
     clear_color: wgpu::Color,
 }
