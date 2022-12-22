@@ -28,7 +28,7 @@ pub async fn run() {
         .build(&event_loop)
         .unwrap();
 
-    //#[cfg(target_arch = "wasm32")]
+    #[cfg(target_arch = "wasm32")]
     {
         // Winit prevents sizing with CSS, so we have to set
         // the size manually when on web.
