@@ -28,19 +28,35 @@ pub async fn run() {
         .build(&event_loop)
         .unwrap();
 
-    #[cfg(target_arch = "wasm32")]
+    //#[cfg(target_arch = "wasm32")]
     {
         // Winit prevents sizing with CSS, so we have to set
         // the size manually when on web.
         use winit::dpi::PhysicalSize;
-        //window.set_inner_size(PhysicalSize::new(450, 400));
-
         use winit::platform::web::WindowExtWebSys;
+        use log::warn;
+
+        // Get the browser viewport size
+        // let (width, height): (i32, i32) = web_sys::window()
+        //     .and_then(|win| {
+        //         let width = win.outer_width().unwrap().as_f64().unwrap() as i32;
+        //         let height = win.outer_height().unwrap().as_f64().unwrap() as i32;
+
+        //         Some((width, height))
+        //     })
+        //     .unwrap();
+
+        // warn!("window inner size: {}, {}", width, height);
+
+        // window.set_inner_size(PhysicalSize::new(1920, 40));
+
         web_sys::window()
             .and_then(|win| win.document())
             .and_then(|doc| {
                 let dst = doc.get_element_by_id("wasm-example")?;
                 let canvas = web_sys::Element::from(window.canvas());
+                canvas.set_attribute("style", "");
+                warn!("canvas size: {}, {}", canvas.client_width(), canvas.client_height());
                 dst.append_child(&canvas).ok()?;
                 Some(())
             })
