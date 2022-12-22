@@ -1,4 +1,4 @@
-use wgpu_test1::run;
+use wgpu_webasm::run;
 
 fn main() {
     pollster::block_on(run());
