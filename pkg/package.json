@@ -1,0 +1,12 @@
+{
+  "name": "wgpu-webasm",
+  "version": "0.1.0",
+  "files": [
+    "wgpu_webasm_bg.wasm",
+    "wgpu_webasm.js",
+    "wgpu_webasm.d.ts"
+  ],
+  "module": "wgpu_webasm.js",
+  "types": "wgpu_webasm.d.ts",
+  "sideEffects": false
+}
